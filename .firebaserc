@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "login-service-9d06b": {
+      "hosting": {
+        "github-search-firebase-login": [
+          "login-service-9d06b"
+        ]
+      }
+    }
+  }
+}
