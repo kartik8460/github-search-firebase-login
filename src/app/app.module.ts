@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment'; // environment (for firebaseconfig)
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -12,6 +13,18 @@ import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.compone
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 
+// FormsModule and HttpClientModule imports
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+// Firebase related imports
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+
+// For Toastr imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +37,16 @@ import { SignupComponent } from './pages/signup/signup.component';
     SigninComponent,
     SignupComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig), // always comes first i.e before AngularFireAuthModule with initializeApp method
+    AngularFireAuthModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
